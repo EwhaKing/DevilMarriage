@@ -2,7 +2,7 @@
 **2026 KING CRAFT 1팀**
 
 ## 프로젝트 소개
-!([게임타이틀](https://github.com/user-attachments/assets/7fd3a739-2215-49ed-89f4-0aa92214ca72))
+<img width="1223" height="638" alt="Image" src="https://github.com/user-attachments/assets/1389196b-a2bc-4a60-b0d0-9ab07826f285" />
 악마 신화에 심취한 주인공이 왕국의 금서관에서 몰래 대악마를 소환한 뒤 결혼하기 위해, 마법진을 한붓그리기 퍼즐처럼 완성하고 다양한 악마들을 수집하고 사육하는 병맛 오컬트 퍼즐 게임.
 
 ## 게임 정보
