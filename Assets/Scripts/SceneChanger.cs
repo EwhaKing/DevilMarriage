@@ -11,16 +11,16 @@ public class SceneChanger : MonoBehaviour
 
     private void Start()
     {
-        // 게임이 시작될 때 'LoadScene'이라는 명령어를 직접 강제로 등록합니다.
         if (dialogueRunner != null)
         {
             dialogueRunner.AddCommandHandler<string>("LoadScene", ChangeSceneByName);
             Debug.Log("LoadScene 명령어 등록됨");
         }
-        else
-        {
-            Debug.LogError("SceneChanger에 Dialogue Runner가 연결되지 않았습니다!");
-        }
+    }
+
+    public void GoToTitleScreen()
+    {
+        ChangeSceneByName("TitleScene");
     }
 
     /// <summary>

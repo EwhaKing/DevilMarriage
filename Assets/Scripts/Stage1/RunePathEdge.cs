@@ -22,6 +22,14 @@ public class RunePathEdge : MonoBehaviour
 
     private void Awake()
     {
+        EnsureLine();
+    }
+
+    private void EnsureLine()
+    {
+        if (_line != null)
+            return;
+
         _line = GetComponent<LineRenderer>();
         _line.useWorldSpace = true;
         _line.positionCount = 2;
@@ -36,6 +44,7 @@ public class RunePathEdge : MonoBehaviour
     {
         runeIndexA = indexA;
         runeIndexB = indexB;
+        EnsureLine();
         SetPositions(positionA, positionB);
         SetTraversed(false);
     }
@@ -48,6 +57,7 @@ public class RunePathEdge : MonoBehaviour
 
     public void SetPositions(Vector3 positionA, Vector3 positionB)
     {
+        EnsureLine();
         _line.SetPosition(0, positionA);
         _line.SetPosition(1, positionB);
     }
@@ -55,6 +65,7 @@ public class RunePathEdge : MonoBehaviour
     public void SetTraversed(bool traversed)
     {
         _traversed = traversed;
+        EnsureLine();
         var color = traversed ? activeColor : inactiveColor;
         _line.startColor = color;
         _line.endColor = color;

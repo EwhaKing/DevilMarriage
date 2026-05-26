@@ -1,9 +1,5 @@
 using UnityEngine;
 
-/// <summary>
-/// 오각형 마법진 꼭짓점의 클릭 가능한 룬.
-/// Stage1PuzzleController가 초기화한 뒤 마우스 클릭을 컨트롤러로 전달한다.
-/// </summary>
 [RequireComponent(typeof(Collider2D))]
 public class RuneNode : MonoBehaviour
 {
