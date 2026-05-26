@@ -1,17 +1,26 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using Yarn.Unity;
+
 public class SceneChanger : MonoBehaviour
 {
     [Header("설정 팝업 UI 오브젝트")]
     [SerializeField] private GameObject settingPopup; // 유니티에서 설정창 UI를 여기에 드래그앤드롭
 
-    /// <summary>
-    /// 1. 지정한 인덱스의 씬으로 이동 (게임시작, 도감 등)
-    /// </summary>
-    public void ChangeSceneByIndex(int sceneIndex)
+    public DialogueRunner dialogueRunner;
+
+    private void Start()
     {
-        Debug.Log(sceneIndex + "번 씬으로 이동합니다.");
-        SceneManager.LoadScene(sceneIndex);
+        // 게임이 시작될 때 'LoadScene'이라는 명령어를 직접 강제로 등록합니다.
+        if (dialogueRunner != null)
+        {
+            dialogueRunner.AddCommandHandler<string>("LoadScene", ChangeSceneByName);
+            Debug.Log("LoadScene 명령어 등록됨");
+        }
+        else
+        {
+            Debug.LogError("SceneChanger에 Dialogue Runner가 연결되지 않았습니다!");
+        }
     }
 
     /// <summary>
@@ -46,5 +55,12 @@ public class SceneChanger : MonoBehaviour
 #else
         Application.Quit();
 #endif
+    }
+
+    // 얀 스크립트에서 <<LoadScene 씬이름>> 을 호출하면 이름으로 씬 이동
+    public void ChangeSceneByName(string sceneName)
+    {
+        Debug.Log($"얀 스크립트 명령: {sceneName} 씬으로 이동합니다.");
+        SceneManager.LoadScene(sceneName);
     }
 }

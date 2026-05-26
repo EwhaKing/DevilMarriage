@@ -31,5 +31,5 @@ title: Tutorial
 주인공: ...안 돼... 평생 이렇게 음침하게 방구석에 박혀서 끝날 순 없어...
 주인공: 어떻게든... 끝까지 그려야 해...
 -> 마법진을 그리러 가자.
-    <<LoadScene stage1>>
+    <<LoadScene Stage1Scene>>
 ===
