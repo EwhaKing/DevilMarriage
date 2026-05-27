@@ -150,6 +150,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SceneChanger
   settingPopup: {fileID: 0}
   dialogueRunner: {fileID: 2085967837}
+  characterPortrait: {fileID: 1008241499}
+  portraitDefault: {fileID: -3775748125889451718, guid: 9cc6e02500b5e634d85f1cad054c7d0d, type: 3}
+  portraitHappy: {fileID: 2519535751737866915, guid: 20d057d2a11dd7d489f06463498c32fc, type: 3}
+  portraitNervous: {fileID: 63942531549172350, guid: 02b2b5a9c4461ab4f9b7ae8e9c6dbf5a, type: 3}
 --- !u!4 &295417366
 Transform:
   m_ObjectHideFlags: 0
@@ -506,6 +510,14 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8150228081625468094, guid: 52571f68872914e24837210513edea1d, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 335980273}
+    - target: {fileID: 8150228081625468094, guid: 52571f68872914e24837210513edea1d, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8309902628685535410, guid: 52571f68872914e24837210513edea1d, type: 3}
       propertyPath: autoStart
       value: 1
@@ -737,14 +749,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.23018861, g: 0.05515839, b: 0.05515839, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 791336545582589345, guid: 18d061703c834fa4c85d8b3a4ed5d37f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -796,8 +808,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 215, y: -67}
-  m_SizeDelta: {x: 600, y: 800}
+  m_AnchoredPosition: {x: 239, y: -32.82}
+  m_SizeDelta: {x: 575.49, y: 891.16}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1008241499
 MonoBehaviour:
@@ -819,9 +831,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ba787949614769a4e8a7eba78d3dbeb1, type: 3}
+  m_Sprite: {fileID: -3775748125889451718, guid: 9cc6e02500b5e634d85f1cad054c7d0d, type: 3}
   m_Type: 1
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1

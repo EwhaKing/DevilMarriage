@@ -1265,6 +1265,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SceneChanger
   settingPopup: {fileID: 1954985954}
   dialogueRunner: {fileID: 0}
+  characterPortrait: {fileID: 0}
+  portraitDefault: {fileID: 0}
+  portraitHappy: {fileID: 0}
+  portraitNervous: {fileID: 0}
 --- !u!4 &952807432
 Transform:
   m_ObjectHideFlags: 0
@@ -2673,7 +2677,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 746a1e095fa06564692df35e0420d1f2, type: 3}
+  m_Sprite: {fileID: -2055991001468741043, guid: 930834ff350fdcf478f51777ea9a5a81, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

@@ -770,7 +770,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.763356, y: -2.427051, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1310962976}
@@ -1151,7 +1151,13 @@ MonoBehaviour:
   runeIndexB: 4
   inactiveColor: {r: 0.45, g: 0.42, b: 0.5, a: 0.55}
   activeColor: {r: 0.92, g: 0.12, b: 0.1, a: 1}
-  pathWidth: 0.1
+  glowColor: {r: 1, g: 0.35, b: 0.2, a: 0.55}
+  pathWidth: 0.2
+  activeWidthMultiplier: 2
+  glowWidthMultiplier: 4
+  pulseSpeed: 5
+  pulseIntensity: 0.45
+  activateFlashDuration: 0.3
   sortingOrder: 1
 --- !u!120 &624829343
 LineRenderer:
@@ -1602,7 +1608,13 @@ MonoBehaviour:
   runeIndexB: 4
   inactiveColor: {r: 0.45, g: 0.42, b: 0.5, a: 0.55}
   activeColor: {r: 0.92, g: 0.12, b: 0.1, a: 1}
-  pathWidth: 0.1
+  glowColor: {r: 1, g: 0.35, b: 0.2, a: 0.55}
+  pathWidth: 0.2
+  activeWidthMultiplier: 2
+  glowWidthMultiplier: 4
+  pulseSpeed: 5
+  pulseIntensity: 0.45
+  activateFlashDuration: 0.3
   sortingOrder: 1
 --- !u!120 &784633020
 LineRenderer:
@@ -1975,7 +1987,13 @@ MonoBehaviour:
   runeIndexB: 3
   inactiveColor: {r: 0.45, g: 0.42, b: 0.5, a: 0.55}
   activeColor: {r: 0.92, g: 0.12, b: 0.1, a: 1}
-  pathWidth: 0.1
+  glowColor: {r: 1, g: 0.35, b: 0.2, a: 0.55}
+  pathWidth: 0.2
+  activeWidthMultiplier: 2
+  glowWidthMultiplier: 4
+  pulseSpeed: 5
+  pulseIntensity: 0.45
+  activateFlashDuration: 0.3
   sortingOrder: 1
 --- !u!120 &920744488
 LineRenderer:
@@ -2145,7 +2163,13 @@ MonoBehaviour:
   runeIndexB: 2
   inactiveColor: {r: 0.45, g: 0.42, b: 0.5, a: 0.55}
   activeColor: {r: 0.92, g: 0.12, b: 0.1, a: 1}
-  pathWidth: 0.1
+  glowColor: {r: 1, g: 0.35, b: 0.2, a: 0.55}
+  pathWidth: 0.2
+  activeWidthMultiplier: 2
+  glowWidthMultiplier: 4
+  pulseSpeed: 5
+  pulseIntensity: 0.45
+  activateFlashDuration: 0.3
   sortingOrder: 1
 --- !u!120 &1046689434
 LineRenderer:
@@ -2415,7 +2439,7 @@ RectTransform:
   m_GameObject: {fileID: 1185946528}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1310962976}
@@ -2669,7 +2693,13 @@ MonoBehaviour:
   runeIndexB: 1
   inactiveColor: {r: 0.45, g: 0.42, b: 0.5, a: 0.55}
   activeColor: {r: 0.92, g: 0.12, b: 0.1, a: 1}
-  pathWidth: 0.1
+  glowColor: {r: 1, g: 0.35, b: 0.2, a: 0.55}
+  pathWidth: 0.2
+  activeWidthMultiplier: 2
+  glowWidthMultiplier: 4
+  pulseSpeed: 5
+  pulseIntensity: 0.45
+  activateFlashDuration: 0.3
   sortingOrder: 1
 --- !u!120 &1203414559
 LineRenderer:
@@ -2880,7 +2910,13 @@ MonoBehaviour:
   runeIndexB: 3
   inactiveColor: {r: 0.45, g: 0.42, b: 0.5, a: 0.55}
   activeColor: {r: 0.92, g: 0.12, b: 0.1, a: 1}
-  pathWidth: 0.1
+  glowColor: {r: 1, g: 0.35, b: 0.2, a: 0.55}
+  pathWidth: 0.2
+  activeWidthMultiplier: 2
+  glowWidthMultiplier: 4
+  pulseSpeed: 5
+  pulseIntensity: 0.45
+  activateFlashDuration: 0.3
   sortingOrder: 1
 --- !u!120 &1298469090
 LineRenderer:
@@ -3099,7 +3135,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.8531697, y: 0.927051, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1310962976}
@@ -3355,7 +3391,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.7633555, y: -2.427051, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1310962976}
@@ -3370,6 +3406,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1382288043}
   - component: {fileID: 1382288042}
+  - component: {fileID: 1382288044}
   m_Layer: 0
   m_Name: StageResources
   m_TagString: Untagged
@@ -3396,6 +3433,23 @@ MonoBehaviour:
   maxRatBlood: 10
   gameOverSceneName: GameOverScene
   gameOverDelay: 0.5
+--- !u!114 &1382288044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382288041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9d8e7f6a5b49382716f7e8d9c0b2a1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StageSfxPlayer
+  resourceManager: {fileID: 1382288042}
+  bloodSplatterClip: {fileID: 8300000, guid: 66e04b98625ffb0419f55fc48f9b1edd, type: 3}
+  sanityDownClip: {fileID: 8300000, guid: 3a0c3869e43deb84d9848411cb03708b, type: 3}
+  sfxMixerGroup: {fileID: 8490083830235158005, guid: ee561146df60fcf41988559993bcce95, type: 2}
+  bloodSplatterVolume: 0.35
 --- !u!4 &1382288043
 Transform:
   m_ObjectHideFlags: 0
@@ -3916,7 +3970,13 @@ MonoBehaviour:
   runeIndexB: 1
   inactiveColor: {r: 0.45, g: 0.42, b: 0.5, a: 0.55}
   activeColor: {r: 0.92, g: 0.12, b: 0.1, a: 1}
-  pathWidth: 0.1
+  glowColor: {r: 1, g: 0.35, b: 0.2, a: 0.55}
+  pathWidth: 0.2
+  activeWidthMultiplier: 2
+  glowWidthMultiplier: 4
+  pulseSpeed: 5
+  pulseIntensity: 0.45
+  activateFlashDuration: 0.3
   sortingOrder: 1
 --- !u!120 &1572030619
 LineRenderer:
@@ -4209,7 +4269,13 @@ MonoBehaviour:
   runeIndexB: 0
   inactiveColor: {r: 0.45, g: 0.42, b: 0.5, a: 0.55}
   activeColor: {r: 0.92, g: 0.12, b: 0.1, a: 1}
-  pathWidth: 0.1
+  glowColor: {r: 1, g: 0.35, b: 0.2, a: 0.55}
+  pathWidth: 0.2
+  activeWidthMultiplier: 2
+  glowWidthMultiplier: 4
+  pulseSpeed: 5
+  pulseIntensity: 0.45
+  activateFlashDuration: 0.3
   sortingOrder: 1
 --- !u!120 &1726716597
 LineRenderer:
@@ -4420,7 +4486,13 @@ MonoBehaviour:
   runeIndexB: 2
   inactiveColor: {r: 0.45, g: 0.42, b: 0.5, a: 0.55}
   activeColor: {r: 0.92, g: 0.12, b: 0.1, a: 1}
-  pathWidth: 0.1
+  glowColor: {r: 1, g: 0.35, b: 0.2, a: 0.55}
+  pathWidth: 0.2
+  activeWidthMultiplier: 2
+  glowWidthMultiplier: 4
+  pulseSpeed: 5
+  pulseIntensity: 0.45
+  activateFlashDuration: 0.3
   sortingOrder: 1
 --- !u!120 &1760662698
 LineRenderer:
@@ -4590,7 +4662,13 @@ MonoBehaviour:
   runeIndexB: 0
   inactiveColor: {r: 0.45, g: 0.42, b: 0.5, a: 0.55}
   activeColor: {r: 0.92, g: 0.12, b: 0.1, a: 1}
-  pathWidth: 0.1
+  glowColor: {r: 1, g: 0.35, b: 0.2, a: 0.55}
+  pathWidth: 0.2
+  activeWidthMultiplier: 2
+  glowWidthMultiplier: 4
+  pulseSpeed: 5
+  pulseIntensity: 0.45
+  activateFlashDuration: 0.3
   sortingOrder: 1
 --- !u!120 &1789985094
 LineRenderer:
@@ -4935,7 +5013,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.00000013113416, y: 3, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1310962976}

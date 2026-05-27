@@ -1,26 +1,54 @@
-﻿using UnityEngine;
+using System;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using Yarn.Unity;
 
 public class SceneChanger : MonoBehaviour
 {
     [Header("설정 팝업 UI 오브젝트")]
-    [SerializeField] private GameObject settingPopup; // 유니티에서 설정창 UI를 여기에 드래그앤드롭
+    [SerializeField] private GameObject settingPopup;
 
     public DialogueRunner dialogueRunner;
 
+    [Header("Dialogue Portrait")]
+    [SerializeField] private Image characterPortrait;
+    [SerializeField] private Sprite portraitDefault;
+    [SerializeField] private Sprite portraitHappy;
+    [SerializeField] private Sprite portraitNervous;
+
+    private Dictionary<string, Sprite> portraitSprites;
+
+    private void Awake()
+    {
+        portraitSprites = new Dictionary<string, Sprite>(StringComparer.OrdinalIgnoreCase);
+
+        if (portraitDefault != null)
+            portraitSprites["default"] = portraitDefault;
+        if (portraitHappy != null)
+            portraitSprites["happy"] = portraitHappy;
+        if (portraitNervous != null)
+            portraitSprites["nervous"] = portraitNervous;
+    }
+
     private void Start()
     {
-        if (dialogueRunner != null)
-        {
-            dialogueRunner.AddCommandHandler<string>("LoadScene", ChangeSceneByName);
-            Debug.Log("LoadScene 명령어 등록됨");
-        }
+        if (dialogueRunner == null)
+            return;
+
+        dialogueRunner.AddCommandHandler<string>("LoadScene", ChangeSceneByName);
+        dialogueRunner.AddCommandHandler<string>("SetExpression", SetCharacterExpression);
     }
 
     public void GoToTitleScreen()
     {
         ChangeSceneByName("TitleScene");
+    }
+
+    public void GoToStage1()
+    {
+        ChangeSceneByName("Stage1Scene");
     }
 
     /// <summary>
@@ -62,5 +90,22 @@ public class SceneChanger : MonoBehaviour
     {
         Debug.Log($"얀 스크립트 명령: {sceneName} 씬으로 이동합니다.");
         SceneManager.LoadScene(sceneName);
+    }
+
+    public void SetCharacterExpression(string expressionId)
+    {
+        if (characterPortrait == null)
+        {
+            Debug.LogWarning("[SceneChanger] Character Portrait Image가 연결되지 않았습니다.");
+            return;
+        }
+
+        if (!portraitSprites.TryGetValue(expressionId, out var sprite))
+        {
+            Debug.LogWarning($"[SceneChanger] 알 수 없는 표정: {expressionId}");
+            return;
+        }
+
+        characterPortrait.sprite = sprite;
     }
 }
