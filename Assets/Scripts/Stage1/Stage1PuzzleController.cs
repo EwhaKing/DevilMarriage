@@ -41,6 +41,8 @@ public class Stage1PuzzleController : MonoBehaviour
     private readonly List<int> _visitHistory = new();
     private int _currentRuneIndex = -1;
     private int _startRuneIndex = -1;
+    private int _lastRuneIndex = -1;
+    private bool _lastMoveWasForward;
     private int _totalPathCount;
     private bool _isMoving;
     private bool _stageCleared;
@@ -100,6 +102,8 @@ public class Stage1PuzzleController : MonoBehaviour
 
         _visitHistory.Clear();
         _visitHistory.Add(_startRuneIndex);
+        _lastRuneIndex = -1;
+        _lastMoveWasForward = false;
 
         if (player != null && startRune != null)
             player.position = startRune.WorldPosition;
@@ -154,10 +158,10 @@ public class Stage1PuzzleController : MonoBehaviour
         if (resourceManager != null && resourceManager.IsGameOver)
             return false;
 
-        if (_visitHistory.Count < 2)
+        if (!_lastMoveWasForward || _lastRuneIndex < 0)
             return false;
 
-        return target.RuneIndex == _visitHistory[_visitHistory.Count - 2];
+        return target.RuneIndex == _lastRuneIndex;
     }
 
     private bool TryBacktrackTo(RuneNode target)
@@ -228,7 +232,8 @@ public class Stage1PuzzleController : MonoBehaviour
     {
         _isMoving = true;
 
-        var from = player != null ? player.position : GetRune(_currentRuneIndex).WorldPosition;
+        int fromRuneIndex = _currentRuneIndex;
+        var from = player != null ? player.position : GetRune(fromRuneIndex).WorldPosition;
         var to = target.WorldPosition;
         float elapsed = 0f;
 
@@ -248,6 +253,8 @@ public class Stage1PuzzleController : MonoBehaviour
 
         _currentRuneIndex = target.RuneIndex;
         _visitHistory.Add(target.RuneIndex);
+        _lastRuneIndex = fromRuneIndex;
+        _lastMoveWasForward = true;
         edge.SetTraversed(true);
         _isMoving = false;
 
@@ -259,7 +266,8 @@ public class Stage1PuzzleController : MonoBehaviour
     {
         _isMoving = true;
 
-        var from = player != null ? player.position : GetRune(_currentRuneIndex).WorldPosition;
+        int fromRuneIndex = _currentRuneIndex;
+        var from = player != null ? player.position : GetRune(fromRuneIndex).WorldPosition;
         var to = target.WorldPosition;
         float elapsed = 0f;
 
@@ -279,6 +287,8 @@ public class Stage1PuzzleController : MonoBehaviour
 
         _visitHistory.RemoveAt(_visitHistory.Count - 1);
         _currentRuneIndex = target.RuneIndex;
+        _lastRuneIndex = fromRuneIndex;
+        _lastMoveWasForward = false;
         edge.SetTraversed(false);
         _isMoving = false;
     }
@@ -287,7 +297,8 @@ public class Stage1PuzzleController : MonoBehaviour
     {
         _isMoving = true;
 
-        var from = player != null ? player.position : GetRune(_currentRuneIndex).WorldPosition;
+        int fromRuneIndex = _currentRuneIndex;
+        var from = player != null ? player.position : GetRune(fromRuneIndex).WorldPosition;
         var to = target.WorldPosition;
         float elapsed = 0f;
 
@@ -307,6 +318,8 @@ public class Stage1PuzzleController : MonoBehaviour
 
         _currentRuneIndex = target.RuneIndex;
         _visitHistory.Add(target.RuneIndex);
+        _lastRuneIndex = fromRuneIndex;
+        _lastMoveWasForward = false;
         edge.SetTraversed(false);
         _isMoving = false;
     }
