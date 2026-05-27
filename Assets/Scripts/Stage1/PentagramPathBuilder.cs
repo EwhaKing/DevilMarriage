@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 #if UNITY_EDITOR
@@ -24,17 +25,18 @@ public class PentagramPathBuilder : MonoBehaviour
     [ContextMenu("Build Pentagram Paths")]
     public void BuildPaths()
     {
-        var runeByIndex = CollectRunesByIndex();
-        if (runeByIndex.Count != 5)
+        var runes = GetRunesInOrder();
+        if (runes.Length != 5)
         {
-            Debug.LogWarning($"PentagramPathBuilder: 룬 5개가 필요합니다. 현재 {runeByIndex.Count}개.");
+            Debug.LogWarning($"PentagramPathBuilder: 룬 5개가 필요합니다. 현재 {runes.Length}개.");
             return;
         }
 
+        EnsureRuneIndices(runes);
+        var runeByIndex = BuildRuneMap(runes);
+
         EnsurePathsRoot();
         ClearExistingPaths();
-
-        var edges = new List<RunePathEdge>();
 
         for (int i = 0; i < EdgePairs.GetLength(0); i++)
         {
@@ -59,22 +61,31 @@ public class PentagramPathBuilder : MonoBehaviour
                 runeByIndex[a].WorldPosition,
                 runeByIndex[b].WorldPosition);
 
-            edges.Add(edge);
+#if UNITY_EDITOR
+            if (!Application.isPlaying)
+                Undo.RegisterCreatedObjectUndo(pathObject, "Build Pentagram Paths");
+#endif
         }
 
 #if UNITY_EDITOR
-        UnityEditor.EditorUtility.SetDirty(this);
+        EditorUtility.SetDirty(this);
         if (pathsRoot != null)
-            UnityEditor.EditorUtility.SetDirty(pathsRoot.gameObject);
+            EditorUtility.SetDirty(pathsRoot.gameObject);
 #endif
 
-        Debug.Log($"PentagramPathBuilder: 경로 {edges.Count}개 생성 완료.");
+        Debug.Log("PentagramPathBuilder: 경로 10개 생성 완료.");
     }
 
     [ContextMenu("Refresh Path Positions")]
     public void RefreshPathPositions()
     {
-        var runeByIndex = CollectRunesByIndex();
+        var runes = GetRunesInOrder();
+        if (runes.Length != 5)
+            return;
+
+        EnsureRuneIndices(runes);
+        var runeByIndex = BuildRuneMap(runes);
+
         var edges = pathsRoot != null
             ? pathsRoot.GetComponentsInChildren<RunePathEdge>()
             : GetComponentsInChildren<RunePathEdge>();
@@ -96,10 +107,31 @@ public class PentagramPathBuilder : MonoBehaviour
             : GetComponentsInChildren<RunePathEdge>();
     }
 
-    private Dictionary<int, RuneNode> CollectRunesByIndex()
+    private RuneNode[] GetRunesInOrder()
+    {
+        return GetComponentsInChildren<RuneNode>()
+            .OrderBy(r => r.transform.GetSiblingIndex())
+            .ToArray();
+    }
+
+    private static void EnsureRuneIndices(RuneNode[] runes)
+    {
+        for (int i = 0; i < runes.Length; i++)
+        {
+            bool isStart = i == 0;
+            runes[i].Configure(i, isStart, mandatory: true, forbidden: false);
+
+#if UNITY_EDITOR
+            if (!Application.isPlaying)
+                EditorUtility.SetDirty(runes[i]);
+#endif
+        }
+    }
+
+    private static Dictionary<int, RuneNode> BuildRuneMap(RuneNode[] runes)
     {
         var map = new Dictionary<int, RuneNode>();
-        foreach (var rune in GetComponentsInChildren<RuneNode>())
+        foreach (var rune in runes)
             map[rune.RuneIndex] = rune;
         return map;
     }
@@ -130,7 +162,7 @@ public class PentagramPathBuilder : MonoBehaviour
             var child = pathsRoot.GetChild(i).gameObject;
 #if UNITY_EDITOR
             if (!Application.isPlaying)
-                DestroyImmediate(child);
+                Undo.DestroyObjectImmediate(child);
             else
 #endif
                 Destroy(child);
